@@ -1,0 +1,63 @@
+﻿@using ShopFruity.Model.Entities
+@model Tuple<Order, List<OrderDetail>>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{
+    ShopFruity.Model.Entities.ShopFruityDBContext context = new ShopFruity.Model.Entities.ShopFruityDBContext();
+    String CustomerName = context.Users.Find(Model.Item1.UserId).Name;
+    String CustomerAddress = context.Users.Find(Model.Item1.UserId).Address;
+    String CustomerPhone = context.Users.Find(Model.Item1.UserId).Phone;
+    List<Product> products = new List<Product>();
+    Double? Sum = 0;
+    foreach (OrderDetail item in Model.Item2)
+    {
+        Product product = context.Products.Find(item.ProductId);
+        products.Add(product);
+    }
+}
+
+<div class="container-fluid">
+    <h1>Chi tiết đơn hàng @Model.Item1.OrderId</h1>
+    <p>Tên khách hàng: @CustomerName</p>
+    <p>Địa chỉ: @CustomerAddress</p>
+    <p>Điện thoại: @CustomerPhone</p>
+    <p>Phương thức thanh toán: @Model.Item1.PaymentMethod</p>
+    <p>Trạng thái thanh toán: @Model.Item1.getStatus()</p>
+
+    <h2>Danh sách sản phẩm</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id Product</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderDetail item in Model.Item2)
+            {
+                Product product = context.Products.Find(item.ProductId);
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.Name</td>
+                    <td class="money">@product.Price</td>
+                    <td>@item.Quantity</td>
+                    <td class="money">@item.Total(product.Price)</td>
+                </tr>
+                Sum += (product.Price * item.Quantity);
+            }
+        </tbody>
+    </table>
+    <div>
+        <p>Tổng tiền: <span class="money">@Sum</span></p>
+    </div>
+    <a class="btn btn-primary" asp-area="Admin" asp-controller="Order" asp-action="Index">Quay lại</a>
+    @if (Model.Item1.Status == null)
+    {
+        <a class="btn btn-success" href="/Admin/Order/Accept/@Model.Item1.OrderId">Xác nhận thành công</a>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿@model List<ShopFruity.Model.Entities.Permission>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh mục phân quyền</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách phân quyền</h3> <a class="btn btn-primary float-right" asp-area="Admin" asp-controller="Permission" asp-action="Create" method="get">Thêm mới</a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Permission Id</th>
+                                <th>Permission Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.PermissionId</td>
+                                    <td>@item.PermissionName</td>
+                                    <td>
+                                        <a href="/Admin/Permission/Edit/@item.PermissionId">Edit </a>|
+                                        <a href="/Admin/Permission/Delete/@item.PermissionId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Permission Id</th>
+                                <th>Permission Name</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>

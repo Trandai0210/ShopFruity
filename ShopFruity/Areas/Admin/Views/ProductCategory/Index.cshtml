@@ -1,0 +1,67 @@
+﻿@model List<ShopFruity.Model.Entities.ProductCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách loại sản phẩm</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách phân quyền</h3> <a class="btn btn-primary float-right" asp-area="Admin" asp-controller="ProductCategory" asp-action="Create" method="get">Thêm mới</a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Created Date</th>
+                                <th>Updated Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ProductCategorieId</td>
+                                    <td>@item.Name</td>
+                                    <td><a href="@item.Image">@item.Image</a></td>
+                                    <td>@item.Description</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.UpdateDate</td>
+                                    <td>
+                                        <a href="/Admin/ProductCategory/Edit/@item.ProductCategorieId">Edit </a>|
+                                        <a href="/Admin/ProductCategory/Delete/@item.ProductCategorieId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Created Date</th>
+                                <th>Updated Date</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+

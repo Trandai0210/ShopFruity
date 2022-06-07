@@ -1,0 +1,121 @@
+﻿@using ShopFruity.Model.Entities
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Star -->
+<div class="container-fluid px-0" style="margin-top: 80px;background: url(/client/img/banner.jpg);">
+    <div style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="text-center" style="padding: 100px 0;">
+            <h1 style="font-size: 60px;color: white;font-weight: bold;">Order</h1>
+            <p class="text-white" style="font-size: 20px;">Home <i class="fa-solid fa-caret-right"></i> <span style="color: #92ad6a;">Order</span></p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!--================Cart Area =================-->
+<section class="cart_area section_padding pt-5">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="pb-3">
+                        <tr>
+                            <th class="fs-20" scope="col">Product</th>
+                            <th class="fs-20" scope="col">Price</th>
+                            <th class="fs-20" scope="col">Quantity</th>
+                            <th class="fs-20" scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    @{
+                        double tongTien = 0;
+                        List<CartItem> carts = (List<CartItem>)Context.Session.Get<List<CartItem>>("Cart");
+                    }
+                    <tbody>
+                        @if (carts != null)
+                        {
+                            foreach (var item in carts)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="@item.ProductOrder.Image" width="200px" height="200px" alt="" />
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="fs-20">@item.ProductOrder.Name</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="money fs-20">@item.ProductOrder.Price</h5>
+                                    </td>
+                                    <td class="fs-20">
+                                        @item.Quantity
+                                    </td>
+                                    <td>
+                                        <h5 class="money fs-20">
+                                            @{
+                                                double tong = item.Quantity * (double)item.ProductOrder.Price;
+                                                tongTien += tong;
+                                            }
+                                            @tong
+                                        </h5>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="fs-20" colspan="3">Tổng tiền thanh toán</td>
+                            <td class="fs-20 money">@tongTien</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div>
+
+                    @{
+                        ShopFruityDBContext context = new ShopFruityDBContext();
+                        User user = new User();
+                        if (Context.Session.GetString("UserId").ToString() != null)
+                        {
+                            int UserId = Context.Session.GetString("UserID") == null ? 1 : int.Parse(Context.Session.GetString("UserID"));
+                            user = context.Users.SingleOrDefault(u => u.UserId == UserId);
+                        }
+                        else
+                        {
+                            <script>window.location.href = "/Home/Login";</script>
+                        }
+
+                    }
+                    <h1>Thông tin khách hàng</h1>
+                    <form asp-controller="Cart" asp-action="Order" method="post" class="mx-2">
+                        <div class="form-group my-2">
+                            <input class="form-control fs-20" name="hoten" value="@user.Name" placeholder="Họ tên" />
+                        </div>
+                        <div class="form-group my-2">
+                            <input class="form-control fs-20" name="email" value="@user.Email" placeholder="Email" />
+                        </div>
+                        <div class="form-group my-2">
+                            <input class="form-control fs-20" name="dienthoai" value="@user.Phone" placeholder="Điện thoại" />
+                        </div>
+                        <div class="form-group my-2">
+                            <input class="form-control fs-20" name="diachi" value="@user.Address" placeholder="Địa chỉ" />
+                        </div>
+                        <div class="form-group my-2">
+                            <input class="form-control fs-20" name="ghichu" placeholder="Ghi chú" />
+                        </div>
+                        <div class="form-group my-2">
+                            <button class="btn btn-primary">Đồng ý đặt hàng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+
+<!--================End Cart Area =================-->

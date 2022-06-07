@@ -1,0 +1,68 @@
+﻿@model List<ShopFruity.Model.Entities.User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh mục khách hàng </h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách khách hàng</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>User Name</th>
+                                <th>User Address</th>
+                                <th>User Email</th>
+                                <th>User Phone</th>
+                                <th>Permission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.UserId</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    @{ 
+                                        @using ShopFruity.Model.Entities
+                                        ShopFruityDBContext context = new ShopFruityDBContext();
+                                        List<Account> accounts = context.Accounts.Where(p => p.UId == item.UserId).ToList();
+                                        int PID = accounts[0].PId.Value;
+                                        String PName = context.Permissions.SingleOrDefault(p => p.PermissionId == PID).PermissionName;
+                                    }
+                                    <td>@PName</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>User Id</th>
+                                <th>User Name</th>
+                                <th>User Address</th>
+                                <th>User Email</th>
+                                <th>User Phone</th>
+                                <th>Permission</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+

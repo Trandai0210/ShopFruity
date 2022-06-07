@@ -1,0 +1,124 @@
+﻿@using ShopFruity.Model.Entities;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<!-- Header Star -->
+<div class="container-fluid px-0" style="margin-top: 70px;background: url(/client/img/banner.jpg);">
+    <div style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="text-center" style="padding: 100px 0;">
+            <h1 style="font-size: 60px;color: white;font-weight: bold;">Product Us</h1>
+            <p class="text-white" style="font-size: 20px;">Home <i class="fa-solid fa-caret-right"></i> <span style="color: #92ad6a;">Product Us</span></p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Product Star-->
+<div class="product text-center container">
+    <h2 class="" style="font-size: 50px;font-weight: bold;">Our Products</h2>
+    <p class="pb-5" style="font-style: 20px !important;color: #92ad6a;">__________________________________________________</p>
+
+    <div class="row">
+        <div>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">Tất cả</button>
+                <button class="nav-link" id="nav-latest-tab" data-bs-toggle="tab" data-bs-target="#nav-latest" type="button" role="tab" aria-controls="nav-latest" aria-selected="false">Mới nhất</button>
+                <button class="nav-link" id="nav-featured-tab" data-bs-toggle="tab" data-bs-target="#nav-featured" type="button" role="tab" aria-controls="nav-featured" aria-selected="false">Nổi bật</button>
+            </div>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab" tabindex="0">
+                <div class="row products justify-content-around mx-0">
+                    @foreach (var item in Model)
+                    {
+                        <div class="product_item">
+                            <img src="@item.Image" height="235.8px" width="235.8px" alt="">
+                            <h3 class="product_item-name" style="font-size:20px !important;">@item.Name</h3>
+                            <p class="product_item-price money">@item.Price</p>
+                            <div class="product_item-btn d-none">
+                                <a onclick="AddToCart('@item.ProductId')" class="btn btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+                                <a href="/Product/Details/@item.ProductId" class="btn btn-view"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-latest" role="tabpanel" aria-labelledby="nav-latest-tab" tabindex="0">
+                @{
+                    List<Product> products = Model;
+                    products = products.OrderByDescending(p => p.CreatedDate).ToList();
+                }
+                <div class="row products justify-content-around mx-0">
+                    @foreach (var item in products)
+                    {
+                        <div class="product_item">
+                            <img src="@item.Image" height="235.8px" width="235.8px" alt="">
+                            <h3 class="product_item-name" style="font-size:20px !important;">@item.Name</h3>
+                            <p class="product_item-price money">@item.Price</p>
+                            <div class="product_item-btn d-none">
+                                <a onclick="AddToCart('@item.ProductId')" class="btn btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+                                <a href="/Product/Details/@item.ProductId" class="btn btn-view"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-featured" role="tabpanel" aria-labelledby="nav-featured-tab" tabindex="0">
+                @{
+                    List<Product> products2 = Model;
+                    products2 = products2.OrderByDescending(p => p.ViewCount).ToList();
+                }
+                <div class="row products justify-content-around mx-0">
+                    @foreach (var item in products2)
+                    {
+                        <div class="product_item">
+                            <img src="@item.Image" height="235.8px" width="235.8px" alt="">
+                            <h3 class="product_item-name" style="font-size:20px !important;">@item.Name</h3>
+                            <p class="product_item-price money">@item.Price</p>
+                            <div class="product_item-btn d-none">
+                                <a onclick="AddToCart('@item.ProductId')" class="btn btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+                                <a href="/Product/Details/@item.ProductId" class="btn btn-view"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product End-->
+    <!--Why Start -->
+    <div class="container py-5 my-5">
+        <div class="row pt-5">
+            <div class="col-4 row">
+                <div class="col-2 pt-3">
+                    <i class="fa-solid fa-cart-plus" style="font-size: 40px;color: orange;"></i>
+                </div>
+                <div class="col-10">
+                    <h3 style="font-size: 40px !important;">Easy to Order</h3>
+                    <p style="font-size: 20px;" class="text-secondary pe-5">Enjoy the convenience of your shopping with the various feafutures available.</p>
+                </div>
+            </div>
+            <div class="col-4 row">
+                <div class="col-2 pt-3">
+                    <i class="fa-solid fa-truck" style="font-size: 40px;color: blue;"></i>
+                </div>
+                <div class="col-10">
+                    <h3 style="font-size: 40px !important;">Fast Delivery</h3>
+                    <p style="font-size: 20px;" class="text-secondary pe-5">We offer the fastest delivery at your location we will ship within 30 min.</p>
+                </div>
+            </div>
+            <div class="col-4 row">
+                <div class="col-2 pt-3">
+                    <i class="fa-solid fa-credit-card" style="font-size: 40px;color: green;"></i>
+                </div>
+                <div class="col-10">
+                    <h3 style="font-size: 40px !important;">Secure Payment</h3>
+                    <p style="font-size: 20px;" class="text-secondary pe-5">Enjoy the convenience of your shopping with the various feafutures available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Why End -->
+

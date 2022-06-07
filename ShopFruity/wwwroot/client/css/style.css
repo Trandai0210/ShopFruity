@@ -1,0 +1,321 @@
+*{
+  font-family: 'Nunito', sans-serif;
+}
+html{
+  font-size: 10px;
+}
+
+.img-logo{
+  max-height: 80px;
+}
+
+h3{
+  font-size: 24px !important;
+  font-weight: bold;
+}
+
+.nav-item > .active{
+  color: #ff0a6c;
+}
+
+.fs-40{
+  font-size: 40px !important;
+  font-weight: bold;
+}
+
+.fs-20{
+  font-size: 20px !important;
+}
+
+/* Nav CSS*/
+
+nav{
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2) !important;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  top: 0;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+.nav-item{
+  height: 80px;
+  position: relative;
+}
+.nav-link{
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: block;
+  height: 100%;
+  padding-top: 2rem;
+  color: black;
+}
+
+.nav-link:hover{
+  color: #ff0a6c;
+}
+
+.nav__right{
+  display: flex;
+  padding-top: 2rem;
+}
+
+.nav__right>a{
+  text-decoration: none;
+}
+.user,
+.cart-shopping{
+  font-size: 2.5rem;
+  display: block;
+  padding-top: .5rem;
+  color: #92ad6a;
+  position: relative;
+}
+
+.user:hover,
+.cart-shopping:hover{
+  color: #ff0a6c;
+}
+
+.form-search{
+  height: 80px;
+  padding: 2rem;
+}
+
+.input-search{
+  font-size: 2rem;
+  border-radius: 25px;
+  border: 1px solid #92ad6a;
+  padding-left: 15px;
+}
+
+.input-search:focus-within{
+  outline: none;
+  border-color: #ff0a6c;
+}
+
+.btn-search{
+  position: absolute;
+  width: 7%;
+  height: calc(50% - 8px);
+  bottom: 24px;
+  right: 24px;
+  border: none;
+  border-radius: 0px 25px 25px 0;
+  background-color: white;
+}
+.btn-search>i{
+  font-size: 2rem;
+  color: #92ad6a;
+}
+
+/* Footer CSS */
+footer{
+  padding-top: 60px;
+  background-color: #f3f3f3;
+  padding-bottom: 20px;
+}
+
+.footer-text{
+  font-size: 16px;
+  text-align: justify;
+}
+.footer__menu{
+  padding-top: 20px;
+}
+
+.footer__menu--item{
+  padding-bottom: 15px;
+}
+
+.footer__menu--item:hover .footer__menu--link{
+  color: #ff0a6c;
+}
+.footer__menu--link{
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+}
+
+.fa-brands{
+  font-size: 1.9rem;
+  color: #92ad6a;
+}
+.fa-brands:hover{
+  color: #ff0a6c;
+}
+header{
+  margin-top: 80px;
+}
+
+/* Login CSS */
+.body-content{
+  height: 100vh;
+}
+
+.content-right:nth-child(){
+  font-size: 1.6rem;
+}
+
+/* Slide CSS*/
+.carousel-indicators{
+  margin-bottom: 100px;
+}
+.carousel-caption{
+  bottom: 45%;
+  font-size: 20px;
+}
+.carousel-caption>h5{
+  font-size: 70px;
+  font-weight: bold;
+  text-shadow: 5px 5px 10px black;
+}
+
+.carousel-caption>p{
+  text-shadow: 5px 5px 10px black;
+  font-size: 24px;
+}
+
+.img-supplier{
+  margin: auto 0;
+}
+/* About CSS */
+
+.about-top{
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  margin-top: -100px;
+}
+
+.about-top_item{
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px -2px 3px #f3f3f3;
+  cursor: pointer;
+  width: 30%;
+  
+}
+
+.about-top_item:hover{
+  animation: Scale ease-in 0.3s;
+  transform: scale(1.1);
+}
+
+.about-bottom_sp{
+  height: 200px;
+  width: 22%;
+  padding-top: 50px;
+}
+
+.about-bottom_sp>i{
+  font-size: 50px;
+  color: #92ad6a;
+}
+
+.about-bottom_sp>h3{
+  font-size: 18px !important;
+  margin-top: 15px;
+}
+
+.about-bottom_sp>p{
+  font-size: 16px;
+  color: gray;
+}
+/* Products CSS */
+.product{
+  padding: 50px 0;
+}
+
+.product_item{
+  width: 19%;
+  margin: 20px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.product_item-name{
+  font-size: 20px !important;
+}
+
+.product_item-price{
+  font-size: 16px;
+}
+
+.product_item-btn{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 80%;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0px 0px 15px 5px gainsboro;
+  padding: 5px 0;
+  animation: Growth 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.btn-add,
+.btn-like,
+.btn-view{
+  font-size: 25px;
+  padding: 0 15px;
+  color: #92ad6a;
+}
+
+.btn-add:hover,
+.btn-like:hover,
+.btn-view:hover{
+  color: #ff0a6c;
+}
+
+.product_item:hover{
+  box-shadow: 0px 0px 15px 5px gainsboro;
+}
+
+.btn-see-more{
+  margin-top: 50px;
+  font-size: 20px;
+  color: #ff0a6c;
+  border: 1px solid #ff0a6c;
+}
+
+.btn-see-more:hover{
+  color: white;
+  background-color: #ff0a6c;
+}
+
+.btn-shop-now{
+  font-size: 28px;
+  color: #ff0a6c;
+  background: white;
+  border: 1px solid #ff0a6c;
+  border-radius: 25px;
+}
+
+.btn-shop-now:hover{
+  color: white;
+  background-color: #ff0a6c;
+  border: 1px solid transparent;
+}
+/* Animation */
+@keyframes Scale {
+  from{
+    transform: scale(1);
+  }
+  to{
+    transform: scale(1.1);
+  }
+}
+
+@keyframes Growth {
+  from{
+    opacity: 0;
+    transform: scale(0);
+    top: 100%;
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+    top: 30%;
+  }
+}

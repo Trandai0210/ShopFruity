@@ -1,0 +1,97 @@
+﻿@model ShopFruity.Model.Entities.Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+<form asp-area="Admin" asp-controller="Product" asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="ProductId"></label>
+        <input asp-for="ProductId" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="MetaKeyWord"></label>
+        <input asp-for="MetaKeyWord" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label asp-for="MetaDescription"></label>
+        <input asp-for="MetaDescription" class="form-control"></input>
+    </div>
+    <div class="form-group d-none">
+        <label asp-for="CreatedDate"></label>
+        <input asp-for="CreatedDate" class="form-control"></input>
+    </div>
+    <div class="form-group d-none">
+        <label asp-for="CreatedBy"></label>
+        <input asp-for="CreatedBy" class="form-control"></input>
+    </div>
+    <div class="form-group d-none">
+        <label asp-for="ViewCount"></label>
+        <input asp-for="ViewCount" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <select asp-for="CategoryId" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+            <option selected>Chọn loại sản phẩm</option>
+            @{
+                @using ShopFruity.Model.Entities;
+                ShopFruityDBContext context = new ShopFruityDBContext();
+                List<ProductCategory> productCategories = context.ProductCategories.ToList();
+                foreach (var item in productCategories)
+                {
+                    <option value="@item.ProductCategorieId">@item.Name</option>
+
+                }
+            }
+        </select>
+
+        @*<div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Loại sản phẩm
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                @{
+                    @using ShopFruity.Model.Entities;
+                    ShopFruityDBContext context = new ShopFruityDBContext();
+                    List<ProductCategory> productCategories = context.ProductCategories.ToList();
+                    foreach (var item in productCategories)
+                    {
+                        <button onclick="SelectCategories(@item.ProductCategorieId)" class="dropdown-item productCategories" value="@item.ProductCategorieId type="button">@item.Name</button>
+                    }
+                }
+            </div>
+        </div>*@
+    </div>
+    <div class="card card-outline card-info">
+        <div class="card-header">
+            <h3 class="card-title">
+                Summernote
+            </h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <textarea id="summernote" asp-for="Content">
+                
+              </textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Cập nhật</button>
+    </div>
+</form>

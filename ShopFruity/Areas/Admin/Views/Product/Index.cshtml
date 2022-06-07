@@ -1,0 +1,73 @@
+﻿@model List<ShopFruity.Model.Entities.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách phân quyền</h3> <a class="btn btn-primary float-right" asp-area="Admin" asp-controller="Product" asp-action="Create" method="get">Thêm mới</a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Category Name</th>
+                                <th>Created Date</th>
+                                <th>ViewCount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ProductId</td>
+                                    <td>@item.Name</td>
+                                    <td><a href="@item.Image" target="_blank">@item.Image</a></td>
+                                    <td>@item.Price</td>
+                                    @{
+                                        ShopFruity.Model.Entities.ShopFruityDBContext context = new ShopFruity.Model.Entities.ShopFruityDBContext();
+                                        String CategoryName = context.ProductCategories.Find(item.CategoryId).Name;
+                                    }
+                                    <td>@CategoryName</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.ViewCount</td>
+                                    <td>
+                                        <a href="/Admin/Product/Edit/@item.ProductId">Edit </a>|
+                                        <a href="/Admin/Product/Delete/@item.ProductId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Created Date</th>
+                                <th>ViewCount</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>

@@ -1,0 +1,20 @@
+﻿@model ShopFruity.Model.Entities.Permission
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<form asp-area="Admin" asp-controller="Permission" asp-action="Create" method="post" class="col-md-6">
+    <div class="form-group">
+        <label asp-for="PermissionId"></label>
+        <input asp-for="PermissionId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PermissionName"></label>
+        <input asp-for="PermissionName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Star -->
+<div class="container-fluid px-0" style="margin-top: 80px;background: url(/client/img/banner.jpg);">
+    <div style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="text-center" style="padding: 100px 0;">
+            <h1 style="font-size: 60px;color: white;font-weight: bold;">Shopping Cart</h1>
+            <p class="text-white" style="font-size: 20px;">Home <i class="fa-solid fa-caret-right"></i> <span style="color: #92ad6a;">Shopping Cart</span></p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!--================Cart Area =================-->
+<section class="cart_area section_padding pt-5">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="pb-3">
+                        <tr>
+                            <th class="fs-20" scope="col">Product</th>
+                            <th class="fs-20" scope="col">Price</th>
+                            <th class="fs-20" scope="col">Quantity</th>
+                            <th class="fs-20" scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    @{
+                        double tongTien = 0;
+                        List<CartItem> carts = (List<CartItem>)Context.Session.Get<List<CartItem>>("Cart");
+                    }
+                    <tbody>
+                        @if (carts != null)
+                        {
+                            foreach (var item in carts)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="@item.ProductOrder.Image" width="200px" height="200px" alt="" />
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="fs-20" >@item.ProductOrder.Name</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="money fs-20">@item.ProductOrder.Price</h5>
+                                    </td>
+                                    <td class="fs-20">
+                                        @item.Quantity
+                                    </td>
+                                    <td>
+                                        <h5 class="money fs-20">
+                                            @{
+                                                double tong = item.Quantity * (double)item.ProductOrder.Price;
+                                                tongTien += tong;
+                                            }
+                                            @tong
+                                        </h5>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="fs-20" colspan="3">Tổng tiền thanh toán</td>
+                            <td class="fs-20 money">@tongTien</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="checkout_btn_inner float-right pb-5">
+                    <a class="btn_1 fs-20 btn btn-primary" href="/Home/Index">Tiếp tục mua hàng</a>
+                    <a class="btn_1 fs-20 btn btn-success checkout_btn_1" href="/Cart/Order">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+</section>
+<!--================End Cart Area =================-->

@@ -1,0 +1,72 @@
+﻿@model List<ShopFruity.Model.Entities.Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh mục đơn hàng</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách đơn hàng</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Customer Name</th>
+                                <th>Customer Address</th>
+                                <th>Customer Phone</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.OrderId</td>
+                                    @{
+                                        ShopFruity.Model.Entities.ShopFruityDBContext context = new ShopFruity.Model.Entities.ShopFruityDBContext();
+                                        String CustomerName = context.Users.Find(item.UserId).Name;
+                                        String CustomerAddress = context.Users.Find(item.UserId).Address;
+                                        String CustomerPhone = context.Users.Find(item.UserId).Phone;
+                                    }
+                                    <td>@CustomerName</td>
+                                    <td>@CustomerAddress</td>
+                                    <td>@CustomerPhone</td>
+                                    <td>@item.PaymentMethod</td>
+                                    <td>@item.getStatus()</td>
+                                    <td>
+                                        <a href="/Admin/Order/Details/@item.OrderId">Details </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Customer Name</th>
+                                <th>Customer Address</th>
+                                <th>Customer Phone</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+

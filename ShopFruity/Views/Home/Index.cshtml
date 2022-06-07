@@ -1,0 +1,213 @@
+﻿@model List<ShopFruity.Model.Entities.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Slider Start -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/client/img/banner.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="carousel-title">Fresh Organic Food</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur dolor et? Numquam, alias enim.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/client/img/banner1.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Eat healthily – Eat Organic </h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur dolor et? Numquam, alias enim.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/client/img/banner2.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Food filled with the essence of Nature</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur dolor et? Numquam, alias enim.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- Slider End -->
+<!-- About Start -->
+<div class="container">
+    <div class="row justify-content-evenly about-top">
+        <div class="about-top_item">
+            <div class="row pt-5">
+                <div class="col-6">
+                    <h2 class="" style="font-size: 30px;font-weight: bold;">ORGANIC FRUIT</h2>
+                    <p style="font-size: 16px;">View all products</p>
+                </div>
+                <div class="col-6">
+                    <img src="~/client/img/img2.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="about-top_item">
+            <div class="row pt-5">
+                <div class="col-6">
+                    <h2 class="" style="font-size: 30px;font-weight: bold;">ORGANIC FRUIT</h2>
+                    <p style="font-size: 16px;">View all products</p>
+                </div>
+                <div class="col-6">
+                    <img src="~/client/img/img4.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="about-top_item">
+            <div class="row pt-5">
+                <div class="col-6">
+                    <h2 class="" style="font-size: 30px;font-weight: bold;">ORGANIC FRUIT</h2>
+                    <p style="font-size: 16px;">View all products</p>
+                </div>
+                <div class="col-6">
+                    <img src="~/client/img/img5.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 200px;">
+        <div class="col-4">
+            <img src="~/client/img/img1.png" class="img-fluid" alt="">
+        </div>
+        <div class="col-8 text-center about-bottom">
+            <h3 style="font-size: 50px !important;font-weight: 400;" class="text-secondary">We are <strong class="text-black">PEAR APPLE</strong></h3>
+            <p style="font-size: 20px;" class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore quod doloremque molestiae<br> odio vitae. Voluptatum ullam possimus neque ea dolore cum soluta, natus, ex voluptate vero amet nisi, sed accusantium Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p style="font-size: 20px;font-weight: 700;" class="text-success">wwwwwwwwwww <i class="fa-solid fa-dove"></i> wwwwwwwwwww<p>
+                <div class="row justify-content-evenly" style="padding-top: 50px;">
+                    <div class="about-bottom_sp">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <h3>FREE SHIP</h3>
+                        <p>Lorem, ipsum dolor.</p>
+                    </div>
+                    <div class="about-bottom_sp">
+                        <i class="fa-solid fa-earth-asia"></i>
+                        <h3>SUPPORTS</h3>
+                        <p>Lorem, ipsum dolor.</p>
+                    </div>
+                    <div class="about-bottom_sp">
+                        <i class="fa-solid fa-people-group"></i>
+                        <h3>HELP PARTNER</h3>
+                        <p>Lorem, ipsum dolor.</p>
+                    </div>
+                    <div class="about-bottom_sp">
+                        <i class="fa-solid fa-phone"></i>
+                        <h3>CONTACT WITH US</h3>
+                        <p>Lorem, ipsum dolor.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<!-- Suppliers Star-->
+<div class="container-fluid px-0" style="background: url(/client/img/background.jpg);">
+    <div class="" style="background: rgba(0, 0, 0, 0.5);">
+        <div class="container py-5">
+            <h3 style="font-size: 50px !important;" class="text-center  text-white">Our Suppliers</h3>
+            <p class="text-center text-white pb-4" style="font-size: 20px;">______________________</p>
+            <div class="row justify-content-around">
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+                <div class="justify-content-center d-flex" style="width: 15%;">
+                    <img src="~/client/img/supplier6.png" class="img-fluid img-supplier" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Suppliers End-->
+<!-- Products Start -->
+<div class="product text-center container">
+    <h2 class="" style="font-size: 50px;font-weight: bold;">Lastest Products</h2>
+    <p class="pb-5" style="font-style: 20px !important;color: #92ad6a;">__________________________________________________</p>
+    <div class="row products justify-content-around mx-0">
+        @foreach (var item in Model)
+        {
+            <div class="product_item">
+                <img src="@item.Image" height="235.8px" width="235.8px" alt="">
+                <h3 class="product_item-name" style="font-size:20px !important;">@item.Name</h3>
+                <p class="product_item-price money">@item.Price</p>
+                <div class="product_item-btn d-none">
+                    <a onclick="AddToCart('@item.ProductId')" class="btn btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+                    <a href="/Product/Details/@item.ProductId" class="btn btn-view"><i class="fa-solid fa-eye"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+    <a class="btn btn-see-more" href="/Product">See more</a>
+</div>
+<!-- Products End -->
+<div class="" style="background: rgb(146,173,106);
+  background: linear-gradient(90deg, rgba(146,173,106,1) 10%, rgba(254,181,250,1) 50%, rgba(255,10,108,1) 100%);">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-center my-auto">
+                <h2 style="font-size: 80px;font-weight: bolder;">Get up to <br>50% OFF</h2>
+                <a class="btn btn-shop-now" href="/Product">Shop Now</a>
+            </div>
+            <img src="~/client/img/background-sale.jpg" class="col-6" alt="">
+        </div>
+    </div>
+</div>
+<!-- Why Start -->
+<div class="container py-5 my-5">
+    <div class="row pt-5">
+        <div class="col-4 row">
+            <div class="col-2 pt-3">
+                <i class="fa-solid fa-cart-plus" style="font-size: 40px;color: orange;"></i>
+            </div>
+            <div class="col-10">
+                <h3 style="font-size: 40px !important;">Easy to Order</h3>
+                <p style="font-size: 20px;" class="text-secondary pe-5">Enjoy the convenience of your shopping with the various feafutures available.</p>
+            </div>
+        </div>
+        <div class="col-4 row">
+            <div class="col-2 pt-3">
+                <i class="fa-solid fa-truck-fast" style="font-size: 40px;color: blue;"></i>
+            </div>
+            <div class="col-10">
+                <h3 style="font-size: 40px !important;">Fast Delivery</h3>
+                <p style="font-size: 20px;" class="text-secondary pe-5">We offer the fastest delivery at your location we will ship within 30 min.</p>
+            </div>
+        </div>
+        <div class="col-4 row">
+            <div class="col-2 pt-3">
+                <i class="fa-solid fa-credit-card" style="font-size: 40px;color: green;"></i>
+            </div>
+            <div class="col-10">
+                <h3 style="font-size: 40px !important;">Secure Payment</h3>
+                <p style="font-size: 20px;" class="text-secondary pe-5">Enjoy the convenience of your shopping with the various feafutures available</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Why End -->
