@@ -31,7 +31,7 @@ namespace ShopFruity.Model.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=sql.bsite.net\\MSSQL2016;Database=trandai_SampleDB;userid=trandai_SampleDB;password=123456");
+                optionsBuilder.UseSqlServer("workstation id=ShopFruityDB.mssql.somee.com;packet size=4096;user id=tranvudai2001_SQLLogin_1;pwd=ggqg1cbj68;data source=ShopFruityDB.mssql.somee.com;persist security info=False;initial catalog=ShopFruityDB");
             }
         }
 
